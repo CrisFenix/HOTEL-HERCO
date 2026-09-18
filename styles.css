@@ -296,3 +296,41 @@
   .visually-hidden{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   .skip-link{ position:fixed; top:-60px; left:12px; background:var(--pine); color:var(--ivory); padding:10px 16px; border-radius:6px; z-index:200; transition: top .2s; }
   .skip-link:focus{ top:12px; }
+
+  /* ---------------- WEB INTERNA / DASHBOARD (MODO PRUEBA) ---------------- */
+  #pagePersonal{ background:var(--ivory-2); }
+  .test-banner{
+    display:flex; align-items:center; gap:12px; background:#5B3A22; color:#F5EEDD;
+    font-size:.84rem; padding:12px 32px; line-height:1.5;
+  }
+  .test-banner svg{ width:20px; height:20px; flex-shrink:0; color:#E3B673; }
+
+  .dash-wrap{ padding-top:48px; padding-bottom:90px; }
+  .dash-title{ font-size:clamp(1.8rem,3vw,2.3rem); margin-top:4px; }
+
+  .dash-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:16px; margin-top:40px; }
+  .dash-card{
+    text-align:left; background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:24px 22px; cursor:pointer; font-family:inherit; display:flex; flex-direction:column; gap:10px;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .dash-card:hover{ transform:translateY(-3px); box-shadow:0 16px 34px rgba(16,20,15,0.1); border-color:var(--brass); }
+  .dash-card.active{ border-color:var(--brass); box-shadow:0 16px 34px rgba(16,20,15,0.12); }
+  .dash-letter{
+    width:32px; height:32px; border-radius:8px; background:var(--pine); color:var(--ivory);
+    display:flex; align-items:center; justify-content:center; font-size:.85rem; font-weight:600;
+  }
+  .dash-card h4{ font-size:1.02rem; margin-top:2px; }
+  .dash-card p{ font-size:.85rem; }
+
+  .dash-detail{
+    position:relative; margin-top:32px; background:var(--pine); color:var(--ivory);
+    border-radius:var(--radius-lg); padding:32px 36px; display:none;
+  }
+  .dash-detail.show{ display:block; }
+  .dash-detail .eyebrow{ color:var(--brass-light); }
+  .dash-detail h3{ font-size:1.4rem; margin:6px 0 12px; }
+  .dash-detail p{ color:rgba(246,242,234,0.78); }
+  .dash-detail .manual-note{ background:rgba(246,242,234,0.08); color:rgba(246,242,234,0.8); }
+  .dash-detail .close{ position:absolute; top:18px; right:20px; background:none; border:none; color:var(--ivory); font-size:1.1rem; cursor:pointer; opacity:.7; }
+  .dash-detail .close:hover{ opacity:1; }

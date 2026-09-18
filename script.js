@@ -25,14 +25,14 @@
   document.getElementById('verHabitacionesBtn').addEventListener('click', function(e){ e.preventDefault(); openPage('pageHabitaciones'); });
   document.getElementById('verTodasBtn').addEventListener('click', function(e){ e.preventDefault(); openPage('pageHabitaciones'); });
   document.getElementById('openManualBtn').addEventListener('click', function(){ openPage('pageManual'); });
-  document.getElementById('personalAccessBtn').addEventListener('click', function(e){ e.preventDefault(); openPage('pageAcceso'); });
-  document.getElementById('personalAccessBtn2').addEventListener('click', function(e){ e.preventDefault(); openPage('pageAcceso'); });
+  document.getElementById('personalAccessBtn').addEventListener('click', function(e){ e.preventDefault(); openPage('pagePersonal'); });
+  document.getElementById('personalAccessBtn2').addEventListener('click', function(e){ e.preventDefault(); openPage('pagePersonal'); });
   document.querySelectorAll('[data-close]').forEach(function(btn){
     btn.addEventListener('click', function(){ closePage(btn.getAttribute('data-close')); });
   });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
-      ['pageHabitaciones','pageManual','pageAcceso'].forEach(closePage);
+      ['pageHabitaciones','pageManual','pagePersonal'].forEach(closePage);
     }
   });
 
@@ -181,4 +181,64 @@
       }
     });
   }catch(e){}
+
+  // ---------- WEB INTERNA: MÓDULOS (MODO PRUEBA) ----------
+  var moduleInfo = {
+    mant: {
+      eyebrow: "Módulo A",
+      title: "Mantenimientos",
+      body: "Cada actividad (aires acondicionados, extintores, lámparas, camas, televisores, ventiladores, pintura...) tendrá una lista de ítems con barra de progreso o barra numérica según corresponda, botón REPARAR con animación de confirmación, historial y archivos de soporte."
+    },
+    manuales: {
+      eyebrow: "Módulo B",
+      title: "Manuales de procesos y procedimientos",
+      body: "Documentación interna organizada por categorías, con procedimientos, archivos adjuntos, búsqueda de contenidos y control de activo/inactivo."
+    },
+    facturas: {
+      eyebrow: "Módulo C",
+      title: "Facturas y pedidos",
+      body: "Registro de facturas, pedidos y proveedores con fechas, valores, estados y documentos de soporte cargados de forma segura."
+    },
+    insumos: {
+      eyebrow: "Módulo D",
+      title: "Registro de insumos",
+      body: "Entradas y salidas de insumos (bolsas de cobijas, tarjetas de bienvenida, etiquetas y otros que se agreguen), con existencias, responsables e historial."
+    },
+    editorpublica: {
+      eyebrow: "Módulo E",
+      title: "Editor de web pública",
+      body: "CMS propio de Hotel Herco: Home, Habitaciones, Explora Caucasia, Servicios y Manual del huésped, con borradores y publicación sin tocar código."
+    },
+    editorprivada: {
+      eyebrow: "Módulo F",
+      title: "Editor de web privada interna",
+      body: "Administra únicamente lo configurable de este panel interno: textos, avisos, accesos rápidos, widgets y orden de módulos del dashboard."
+    },
+    usuarios: {
+      eyebrow: "Módulo G",
+      title: "Gestión de usuarios y accesos",
+      body: "Creación de usuarios, asignación de roles (Administrador, Personal, Recepción) y permisos, restablecimiento de credenciales y consulta de actividad."
+    }
+  };
+
+  var dashDetail = document.getElementById('dashDetail');
+  if(dashDetail){
+    var dashCards = document.querySelectorAll('.dash-card');
+    dashCards.forEach(function(card){
+      card.addEventListener('click', function(){
+        dashCards.forEach(function(c){ c.classList.remove('active'); });
+        card.classList.add('active');
+        var info = moduleInfo[card.dataset.mod];
+        document.getElementById('dashDetailEyebrow').textContent = info.eyebrow;
+        document.getElementById('dashDetailTitle').textContent = info.title;
+        document.getElementById('dashDetailBody').textContent = info.body;
+        dashDetail.classList.add('show');
+        dashDetail.scrollIntoView({ behavior:'smooth', block:'nearest' });
+      });
+    });
+    document.getElementById('dashDetailClose').addEventListener('click', function(){
+      dashDetail.classList.remove('show');
+      dashCards.forEach(function(c){ c.classList.remove('active'); });
+    });
+  }
 })();

@@ -358,13 +358,71 @@
   </div>
 </div>
 
-<!-- ================= ACCESO PERSONAL MODAL ================= -->
-<div class="internal-page" id="pageAcceso" style="display:flex; align-items:center; justify-content:center;">
-  <div style="max-width:420px; text-align:center; padding:40px;">
-    <p class="eyebrow">Acceso personal</p>
-    <h2 style="margin-bottom:16px;">Esta sección es exclusiva para el personal autorizado del hotel.</h2>
-    <p style="margin:0 auto 30px;">El inicio de sesión y el panel interno requieren un servidor con autenticación y base de datos reales, y se implementan por separado de esta página pública.</p>
-    <button class="btn btn-primary" data-close="pageAcceso" style="margin:0 auto;">Volver al inicio</button>
+<!-- ================= WEB INTERNA PRIVADA (MODO PRUEBA, SIN LOGIN) ================= -->
+<div class="internal-page" id="pagePersonal" role="dialog" aria-modal="true" aria-label="Web interna privada">
+  <div class="internal-header">
+    <button class="back-btn" data-close="pagePersonal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Volver a la web pública
+    </button>
+    <strong style="letter-spacing:.04em; font-size:.85rem;">WEB INTERNA · HOTEL HERCO</strong>
+  </div>
+
+  <div class="test-banner">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+    Modo de prueba: el acceso está abierto temporalmente, sin usuario ni contraseña, solo para diseño y revisión. El inicio de sesión real se activará más adelante.
+  </div>
+
+  <div class="wrap dash-wrap">
+    <p class="eyebrow">Panel interno</p>
+    <h1 class="dash-title">Hola, equipo Herco.</h1>
+    <p style="margin-top:8px;">Seleccione un módulo para revisarlo. Por ahora son vistas de referencia; la funcionalidad completa de cada uno se construye por fases.</p>
+
+    <div class="dash-grid" id="dashGrid">
+      <button class="dash-card" data-mod="mant">
+        <span class="dash-letter">A</span>
+        <h4>Mantenimientos</h4>
+        <p>Seguimiento de aires, extintores, lámparas, camas, televisores y demás activos del hotel.</p>
+      </button>
+      <button class="dash-card" data-mod="manuales">
+        <span class="dash-letter">B</span>
+        <h4>Manuales de procesos y procedimientos</h4>
+        <p>Documentación interna, procedimientos por área y archivos adjuntos.</p>
+      </button>
+      <button class="dash-card" data-mod="facturas">
+        <span class="dash-letter">C</span>
+        <h4>Facturas y pedidos</h4>
+        <p>Proveedores, documentos, valores y soportes asociados a cada registro.</p>
+      </button>
+      <button class="dash-card" data-mod="insumos">
+        <span class="dash-letter">D</span>
+        <h4>Registro de insumos</h4>
+        <p>Entradas, salidas y existencias de bolsas, tarjetas de bienvenida, etiquetas y más.</p>
+      </button>
+      <button class="dash-card" data-mod="editorpublica">
+        <span class="dash-letter">E</span>
+        <h4>Editor de web pública</h4>
+        <p>Home, Habitaciones, Explora Caucasia, Servicios y Manual del huésped.</p>
+      </button>
+      <button class="dash-card" data-mod="editorprivada">
+        <span class="dash-letter">F</span>
+        <h4>Editor de web privada interna</h4>
+        <p>Textos, avisos, accesos rápidos y widgets del propio panel interno.</p>
+      </button>
+      <button class="dash-card" data-mod="usuarios">
+        <span class="dash-letter">G</span>
+        <h4>Gestión de usuarios y accesos</h4>
+        <p>Crear usuarios, asignar roles y permisos, restablecer credenciales.</p>
+      </button>
+    </div>
+
+    <div class="dash-detail" id="dashDetail">
+      <button class="close" id="dashDetailClose" aria-label="Cerrar">✕</button>
+      <p class="eyebrow" id="dashDetailEyebrow">Módulo</p>
+      <h3 id="dashDetailTitle">Nombre del módulo</h3>
+      <p id="dashDetailBody">Descripción del módulo.</p>
+      <div class="manual-note">Vista de referencia — sin conexión a datos reales todavía.</div>
+    </div>
   </div>
 </div>
 
